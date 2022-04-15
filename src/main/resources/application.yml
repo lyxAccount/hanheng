@@ -1,0 +1,65 @@
+server:
+  port: 8888
+spring:
+  mail:
+    host: smtp.163.com
+    username: lyxaccount@163.com
+    password: SKPFGCULJSTNHPMD
+    port: 465
+    from: lyxaccount@163.com
+    default-encoding: utf-8
+    protocol: smtps
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+            required: true
+  redis:
+    host: localhost
+    port: 6379
+    database: 10
+    jedis:
+      pool:
+        max-active: 50
+        max-wait: 3000ms
+        max-idle: 20
+        min-idle: 5
+    timeout: 5000ms
+
+
+  application:
+    name: allDemo
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/alldemo?useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true&serverTimezone=GMT%2B8
+    username: root
+    password: root
+    type: com.alibaba.druid.pool.DruidDataSource
+aliyun:
+  oss:
+    file:
+      endpoint: oss-cn-hangzhou.aliyuncs.com
+      keyid: LTAI5tNSGMZyXURb4sWrWBsv
+      keysecret: hKguL8hyW2WGn09J0Ux7TTQECcspX8
+      bucketname: l-y-x-bucket
+
+mybatis-plus:
+  mapper-locations: classpath*:src.main.java.mapper/*/*.xml,classpath*:src.main.java.mapperxml/*.xml
+
+logging:
+  level:
+    com.example.interfacedemo.mapper: debug
+
+#jwt设置
+# JWT存储的请求头
+jwt:
+  tokenHeader: Authorization
+  secret: yeb-secret
+  expiration: 604800
+  tokenHead: Bearer
+
+
+
+

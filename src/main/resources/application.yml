@@ -1,10 +1,10 @@
 server:
-  port: 8889
+  port: 8888
 spring:
   mail:
     host: smtp.163.com
     username: lyxaccount@163.com
-    password: SKPFGCULJSTNHPMD
+    password:
     port: 465
     from: lyxaccount@163.com
     default-encoding: utf-8
@@ -41,8 +41,8 @@ aliyun:
   oss:
     file:
       endpoint: oss-cn-hangzhou.aliyuncs.com
-      keyid: LTAI5tNSGMZyXURb4sWrWBsv
-      keysecret: hKguL8hyW2WGn09J0Ux7TTQECcspX8
+      keyid:
+      keysecret:
       bucketname: l-y-x-bucket
 
 mybatis-plus:

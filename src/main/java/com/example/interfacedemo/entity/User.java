@@ -1,10 +1,14 @@
 package com.example.interfacedemo.entity;
 
+import com.alibaba.excel.annotation.ExcelIgnore;
+import com.alibaba.excel.annotation.ExcelProperty;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 
 /**
@@ -13,22 +17,27 @@ import lombok.Data;
  */
 @TableName(value ="user")
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class User {
     /**
      * 
      */
     @TableId(type = IdType.AUTO)
+    @ExcelIgnore
     private Integer id;
 
     /**
      * 
      */
     @TableField("username")
+    @ExcelProperty(value = "用户名",index = 1)
     private String username;
 
     /**
      * 
      */
+    @ExcelIgnore
     @TableField("password")
     private String password;
 
@@ -36,6 +45,7 @@ public class User {
     /**
      * 
      */
+    @ExcelIgnore
     private String role;
 
     @TableField(exist = false)

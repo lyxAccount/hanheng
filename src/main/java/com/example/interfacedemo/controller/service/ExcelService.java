@@ -4,6 +4,7 @@ import com.example.interfacedemo.controller.pojo.Student;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 import java.util.List;
 
 public interface ExcelService {
@@ -14,4 +15,6 @@ public interface ExcelService {
      * @return
      */
     List<Student> read(MultipartFile file, ExcelService excelService);
+
+    void export(HttpServletResponse response) throws IOException;
 }

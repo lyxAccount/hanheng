@@ -20,7 +20,7 @@ public class Operation {
         double apply = mathOperation.apply(1, 2);
         System.out.println(apply);
 
-        MathOperation add = MathFactory02.getOperation("add").get();
+        MathOperation add = MathFactory02.getOperation("sub").get();
         double apply1 = add.apply(1, 2);
         System.out.println(apply1);
 

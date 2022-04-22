@@ -14,7 +14,7 @@ public class AliFactory implements IFactory {
         String operate = type.substring(0,1).toUpperCase() + type.substring(1).toLowerCase();
         Class<?> operation = Class.forName("com.example.interfacedemo.designMode.mode3.impl." + operate + "Productor");
         return Optional.of((IProductor)operation.getDeclaredConstructor().newInstance()).orElseThrow(() ->
-                new IllegalArgumentException("未知的公司"));
+                new IllegalArgumentException("未知的公司！"));
     }
 
     @Override

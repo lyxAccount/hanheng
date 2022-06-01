@@ -46,7 +46,9 @@ aliyun:
       bucketname: l-y-x-bucket
 
 mybatis-plus:
-  mapper-locations: classpath*:src.main.java.mapper/*/*.xml,classpath*:src.main.java.mapperxml/*.xml
+  mapper-locations: classpath*:com/example/interfacedemo/mapperxml/*/*.xml,classpath*:com/example/interfacedemo/mapperxml/*.xml
+  #所映射的实体类的包名
+  type-aliases-package: com.example.interfacedemo.entity
 
 logging:
   level:

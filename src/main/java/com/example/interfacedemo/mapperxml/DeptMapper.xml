@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.interfacedemo.mapper.DeptMapper">
+
+    <!--    自定义映射规则-->
+    <resultMap id="OneToMany" type="com.example.interfacedemo.entity.Dept">
+        <id column="id" property="id"/>
+        <result column="pid" property="pid" />
+        <result column="name" property="name"/>
+        <!--        实体类中有集合，使用collection标签-->
+        <collection property="children" column="id" ofType="com.example.interfacedemo.entity.Dept"
+                    select="com.example.interfacedemo.mapper.DeptMapper.getListByPiD">
+        </collection>
+
+    </resultMap>
+
+    <!--    关联查询实现一对多查询-->
+    <select id="getDeptList" parameterType="java.lang.String" resultMap="OneToMany">
+        SELECT * FROM dept where id =#{id}
+    </select>
+
+    <select id="test" resultType="com.example.interfacedemo.entity.Dept">
+        select * from dept where id = #{id}
+    </select>
+
+    <select id="getListByPiD" resultMap="OneToMany">
+        select * from dept where pid = #{id}
+    </select>
+
+</mapper>

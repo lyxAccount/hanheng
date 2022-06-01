@@ -9,10 +9,16 @@
             <result property="username" column="username" jdbcType="VARCHAR"/>
             <result property="password" column="password" jdbcType="VARCHAR"/>
             <result property="role" column="role" jdbcType="VARCHAR"/>
+
+        <collection property="accountList" ofType="com.example.interfacedemo.entity.Account">
+            <id column="bid" property="id"></id>
+            <result column="uid" property="uid"></result>
+            <result column="money" property="money"></result>
+        </collection>
     </resultMap>
 
-    <sql id="Base_Column_List">
-        id,username,password,
-        role
-    </sql>
+
+    <select id="testOneToMany" resultMap="BaseResultMap">
+        SELECT a.*,b.id as bid,b.money,b.uid from user a LEFT JOIN account b on a.id = b.uid
+    </select>
 </mapper>

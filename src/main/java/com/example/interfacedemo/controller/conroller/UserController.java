@@ -65,4 +65,9 @@ public class UserController {
         Object object = redisUtil.get("user");
         return object.toString();
     }
+
+    @GetMapping("/one")
+    public void testOneToMany() {
+        userService.testOnetomany();
+    }
 }

@@ -10,6 +10,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 
 /**
  * 
@@ -51,6 +53,14 @@ public class User {
     @TableField(exist = false)
     private static final long serialVersionUID = 1L;
 
+    @TableField(exist = false)
+    private List<Account> accountList;
 
 
+    public User(Integer id,String username,String password,String role){
+        this.id = id;
+        this.username = username;
+        this.password = password;
+        this.role = role;
+    }
 }

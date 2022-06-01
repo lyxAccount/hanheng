@@ -23,6 +23,7 @@ import java.time.ZoneId;
 import java.time.ZoneOffset;
 import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -86,24 +87,10 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User>
         return tokenMap;
     }
 
-    public static void main(String[] args) {
-        LocalDateTime localDateTime = LocalDateTime.now();
-        String time = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss").format(localDateTime);
-        System.out.println("当前时间为："+time);
-        long milli = localDateTime.toInstant(ZoneOffset.of("+8")).toEpochMilli();
-        System.out.println("当前时间戳为："+milli);
-
-        System.out.println("..................................................................");
-
-
-        System.out.println("要转换的时间戳为："+milli);
-        Instant instant = Instant.ofEpochMilli(milli);
-        LocalDateTime localDateTime1 = LocalDateTime.ofInstant(instant, ZoneId.systemDefault());
-//        LocalDateTime dateTime = LocalDateTime.ofEpochSecond(milli / 1000, 0, ZoneOffset.ofHours(8));
-        System.out.println("转换后的时间为："+DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss").format(localDateTime1));
-        long after = localDateTime1.toInstant(ZoneOffset.of("+8")).toEpochMilli();
-//        long after = dateTime.toInstant(ZoneOffset.of("+8")).toEpochMilli();
-        System.out.println("转换后的时间戳的结果为："+after);
+    @Override
+    public List<User> testOnetomany() {
+        List<User> list =  userDao.testOneToMany();
+        return list;
     }
 }
 

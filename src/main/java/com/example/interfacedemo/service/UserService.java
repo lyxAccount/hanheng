@@ -3,6 +3,7 @@ package com.example.interfacedemo.service;
 import com.example.interfacedemo.entity.User;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -18,4 +19,6 @@ public interface UserService {
     void insertUser(User registerUser);
 
     Map login(String username, String password, HttpServletRequest request);
+
+    List<User> testOnetomany();
 }

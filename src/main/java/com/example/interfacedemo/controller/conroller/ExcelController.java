@@ -28,4 +28,17 @@ public class ExcelController {
         excelService.export(response);
         return "success";
     }
+
+    /**
+     * 导出为excel并根据规则合并单元格
+     * @param response
+     * @return
+     * @throws IOException
+     */
+    @PostMapping("/merge")
+    public String exportExcelMerge(HttpServletResponse response) throws IOException {
+        excelService.exportMerge(response);
+        return "success";
+    }
+
 }

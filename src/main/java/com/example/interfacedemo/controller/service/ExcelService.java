@@ -17,4 +17,6 @@ public interface ExcelService {
     List<Student> read(MultipartFile file, ExcelService excelService);
 
     void export(HttpServletResponse response) throws IOException;
+
+    void exportMerge(HttpServletResponse response);
 }

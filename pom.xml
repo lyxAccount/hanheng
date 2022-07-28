@@ -72,6 +72,13 @@
             <version>3.13.4</version>
         </dependency>
 
+        <!--视频帧数截取-->
+        <dependency>
+            <groupId>org.bytedeco</groupId>
+            <artifactId>javacv</artifactId>
+            <version>1.0</version>
+        </dependency>
+
 
         <dependency>
             <groupId>org.apache.poi</groupId>

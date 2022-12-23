@@ -13,4 +13,6 @@ public interface DeptMapper extends BaseMapper<Dept> {
     Dept test(String id);
 
     List<Dept> getListByPiD(String id);
+
+    List<Dept> getList();
 }

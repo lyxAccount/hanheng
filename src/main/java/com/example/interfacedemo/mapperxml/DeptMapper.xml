@@ -28,5 +28,8 @@
     <select id="getListByPiD" resultMap="OneToMany">
         select * from dept where pid = #{id}
     </select>
+    <select id="getList" resultMap="OneToMany">
+        select * from dept a left join dept b on a.id = b.pid;
+    </select>
 
 </mapper>

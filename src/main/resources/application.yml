@@ -49,7 +49,9 @@ mybatis-plus:
   mapper-locations: classpath*:com/example/interfacedemo/mapperxml/*/*.xml,classpath*:com/example/interfacedemo/mapperxml/*.xml
   #所映射的实体类的包名
   type-aliases-package: com.example.interfacedemo.entity
-
+#  mapper-locations: classpath*:com/example/interfacedemo/**/*.xml,classpath*:com/example/interfacedemo/*/*.xml
+# 错误的配置如下，正确的应该至少包含com/example/**
+#  mapper-locations: classpath*:com/**/*.xml,classpath*:com/*/*.xml
 logging:
   level:
     com.example.interfacedemo.mapper: debug

@@ -24,6 +24,9 @@ public class DeptController {
     public void testOneToMany() {
         Dept dept = deptMapper.getDeptList("1");
         System.out.println(dept);
+        //一对多返回list,跟查询单个是一样的
+        List<Dept> list = deptMapper.getList();
+        System.out.println(list);
 //        List<Dept> depts = deptMapper.selectList(null);
     }
 

@@ -1,0 +1,54 @@
+
+//定时器
+
+SET NAMES utf8mb4;
+SET FOREIGN_KEY_CHECKS = 0;
+
+-- ----------------------------
+-- Table structure for sys_scheduled
+-- ----------------------------
+DROP TABLE IF EXISTS `sys_scheduled`;
+CREATE TABLE `sys_scheduled`  (
+  `id` varchar(36) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `job_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '任务名',
+  `url` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '请求地址',
+  `method` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '请求方法',
+  `param_json` varchar(2000) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '参数json',
+  `bean_class` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '任务执行时调用哪个类的方法 包名+类名',
+  `cron_expression` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT 'cron表达式',
+  `description` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '任务描述',
+  `job_status` char(1) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '任务状态(Y/N)',
+  `create_time` datetime NULL DEFAULT NULL COMMENT '创建时间',
+  `create_people` varchar(36) CHARACTER SET utf8 COLLATE utf8_bin NULL DEFAULT NULL COMMENT '创建人',
+  `update_people` varchar(36) CHARACTER SET utf8 COLLATE utf8_bin NULL DEFAULT NULL COMMENT '更新人',
+  `update_time` datetime NULL DEFAULT NULL COMMENT '更新时间',
+  `is_deleted` char(1) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT 'N' COMMENT '是否删除(Y/N)',
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
+
+-- ----------------------------
+-- Records of sys_scheduled
+-- ----------------------------
+INSERT INTO `sys_scheduled` VALUES ('9ee55da3-7907-4fa0-afee-d5f002ae70a4', '定时上报超时未处理待办', 'http://dev.api.ccxcjg.project.cr.public.hanwintech.com/ScheduleItem/question/deal/autoSubmitQuestions', 'post', '{}', NULL, '0 * * ? * * ', '定时上报超时未处理待办', 'Y', '2022-06-13 14:43:34', '1', '1', '2022-06-13 14:43:44', 'N');
+INSERT INTO `sys_scheduled` VALUES ('c79319c3-d1e1-405d-969d-5cf50b41572a', '定时发送巡查提醒', 'http://dev.api.ccxcjg.project.cr.public.hanwintech.com/patrol/message/remind', 'post', '{}', NULL, '0 0 8 ? * THU', '定时发送巡查提醒', 'Y', '2022-01-27 11:13:11', '1', '1', '2022-01-27 11:13:21', 'N');
+
+SET FOREIGN_KEY_CHECKS = 1;
+
+
+SET NAMES utf8mb4;
+SET FOREIGN_KEY_CHECKS = 0;
+
+-- ----------------------------
+-- Table structure for sys_scheduled_log
+-- ----------------------------
+DROP TABLE IF EXISTS `sys_scheduled_log`;
+CREATE TABLE `sys_scheduled_log`  (
+  `id` varchar(36) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
+  `schedule_id` varchar(36) CHARACTER SET utf8 COLLATE utf8_bin NULL DEFAULT NULL COMMENT '任务id',
+  `exectue_time` datetime NULL DEFAULT NULL COMMENT '执行结束时间',
+  `status` char(1) CHARACTER SET utf8 COLLATE utf8_bin NULL DEFAULT NULL COMMENT 'Y成功，N失败',
+  `remark` varchar(2000) CHARACTER SET utf8 COLLATE utf8_bin NULL DEFAULT NULL COMMENT '备注',
+  `create_time` datetime NULL DEFAULT NULL COMMENT '创建时间',
+  PRIMARY KEY (`id`) USING BTREE,
+  INDEX `idx_schedule_job_id`(`schedule_id`) USING BTREE
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_bin COMMENT = '任务日志表' ROW_FORMAT = DYNAMIC;

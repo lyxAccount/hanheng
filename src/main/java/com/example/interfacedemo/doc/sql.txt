@@ -1,5 +1,5 @@
 
-//定时器
+//定时器,接口要放开不认证，不要加swagger注解
 
 SET NAMES utf8mb4;
 SET FOREIGN_KEY_CHECKS = 0;

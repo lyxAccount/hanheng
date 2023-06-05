@@ -4,13 +4,15 @@ import com.example.interfacedemo.entity.User;
 import com.example.interfacedemo.mapper.UserMapper;
 import com.example.interfacedemo.service.UserService;
 import com.example.interfacedemo.util.RedisUtil;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.Map;
-
+@Api(tags = "用户")
 @RestController
 public class UserController {
 
@@ -28,8 +30,9 @@ public class UserController {
         return null;
     }
 
+    @ApiOperation(value = "登录")
     @GetMapping("/login")
-    public Map login(@RequestBody() User loginParam, HttpServletRequest request) {
+    public Map login(@RequestBody User loginParam, HttpServletRequest request) {
         return userService.login(loginParam.getUsername(), loginParam.getPassword(), request);
     }
 

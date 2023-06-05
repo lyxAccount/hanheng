@@ -37,6 +37,10 @@ spring:
     username: root
     password: root
     type: com.alibaba.druid.pool.DruidDataSource
+    #Spring Boot 2.6及 更高版本使用的是PathPatternMatcher，而Springfox(swagger)使用的路径匹配是基于AntPathMatcher的，所以需要配置。
+  mvc:
+    pathmatch:
+      matching-strategy: ANT_PATH_MATCHER
 aliyun:
   oss:
     file:

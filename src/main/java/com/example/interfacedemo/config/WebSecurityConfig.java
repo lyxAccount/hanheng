@@ -3,6 +3,7 @@ package com.example.interfacedemo.config;
 import com.example.interfacedemo.filter.JwtAuthencationTokenFilter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -39,8 +40,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
-//                .antMatchers(HttpMethod.POST, "/register").permitAll() // 允许post请求/register，而无需认证
-//                .antMatchers(HttpMethod.POST, "/login").anonymous()
+                .antMatchers(HttpMethod.POST, "/register").permitAll() // 允许post请求/register，而无需认证
+                .antMatchers(HttpMethod.POST, "/login").anonymous()
                 .antMatchers("/register",
                         "/login",
                         "/logout",
@@ -49,10 +50,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                         "/index.html",
                         "favicon.ico",
                         "/doc.html",
+                        "/swagger-ui.html",
                         "/webjars/**",
                         "/swagger-resources/**",
                         "/v2/api-docs/**",
-                        "/**",//先放开便于测试
+//                        "/**",//先放开便于测试
                         "/captcha",
                         "/ws/**").permitAll()
                 .anyRequest().authenticated() // 所有请求都需要验证

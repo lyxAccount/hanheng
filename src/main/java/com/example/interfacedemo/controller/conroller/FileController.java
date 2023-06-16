@@ -22,6 +22,10 @@ public class FileController {
     @PostMapping("/download/dir")
     private HttpServletResponse downDestroy( HttpServletResponse response){
         File file = new File("E:/target");
+        File dir = new File("E:/test");
+        if(!dir.exists()){
+            dir.mkdirs();
+        }
         String zipFilePath = "E:/test/a"+"_"+System.currentTimeMillis()/1000+".zip";
         ZipCompressor zipCompressor = new ZipCompressor(zipFilePath);
         try {

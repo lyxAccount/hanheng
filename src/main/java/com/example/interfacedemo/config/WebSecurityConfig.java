@@ -54,7 +54,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                         "/webjars/**",
                         "/swagger-resources/**",
                         "/v2/api-docs/**",
-//                        "/**",//先放开便于测试
+                        "/**",//先放开便于测试
                         "/captcha",
                         "/ws/**").permitAll()
                 .anyRequest().authenticated() // 所有请求都需要验证

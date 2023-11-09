@@ -2,7 +2,6 @@ package com.example.interfacedemo.controller.conroller;
 
 import com.example.interfacedemo.util.ZipCompressor;
 import com.example.interfacedemo.util.fileUtil.FileUtil;
-import com.sun.deploy.net.URLEncoder;
 import org.apache.commons.codec.binary.Base64;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -11,6 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletResponse;
 import java.io.*;
+import java.net.URLEncoder;
 
 @RestController
 @RequestMapping("/file")
@@ -21,7 +21,9 @@ public class FileController {
 
     @PostMapping("/download/dir")
     private HttpServletResponse downDestroy( HttpServletResponse response){
+        //要压缩的目录
         File file = new File("E:/target");
+        //放压缩包的目录，跟下面zipFilePath一致
         File dir = new File("E:/test");
         if(!dir.exists()){
             dir.mkdirs();

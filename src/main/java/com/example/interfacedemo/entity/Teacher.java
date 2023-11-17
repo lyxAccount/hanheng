@@ -5,6 +5,9 @@ import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import java.io.Serializable;
+import java.util.List;
+
+import com.example.interfacedemo.controller.pojo.Student;
 import lombok.Data;
 
 /**
@@ -32,6 +35,9 @@ public class Teacher implements Serializable {
 
     @TableField(exist = false)
     private static final long serialVersionUID = 1L;
+
+    @TableField(exist = false)
+    private List<Student> list;
 
     @Override
     public boolean equals(Object that) {

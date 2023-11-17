@@ -3,7 +3,7 @@ package com.example.interfacedemo.util.fileUtil;
 import org.bytedeco.javacv.FFmpegFrameGrabber;
 import org.bytedeco.javacv.Frame;
 import org.bytedeco.javacv.Java2DFrameConverter;
-import sun.misc.BASE64Encoder;
+//import sun.misc.BASE64Encoder;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
@@ -73,9 +73,10 @@ public class FileUtil {
         ImageIO.write(bi, "jpg", baos);
 
         byte[] bytes = baos.toByteArray();// 转换成字节
-        BASE64Encoder encoder = new BASE64Encoder();
-        String png_base64 = encoder.encodeBuffer(bytes).trim();// 转换成base64串
-        png_base64 = png_base64.replaceAll("\n", "").replaceAll("\r", "");// 删除// \r\n
-        return png_base64;
+//        BASE64Encoder encoder = new BASE64Encoder();
+//        String png_base64 = encoder.encodeBuffer(bytes).trim();// 转换成base64串
+//        png_base64 = png_base64.replaceAll("\n", "").replaceAll("\r", "");// 删除// \r\n
+//        return png_base64;
+        return "0";
     }
 }

@@ -1,6 +1,15 @@
 server:
   port: 8888
 spring:
+  application:
+    name: allDemo
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/alldemo?useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true&serverTimezone=GMT%2B8
+    username: root
+    password: root
+    type: com.alibaba.druid.pool.DruidDataSource
+    #Spring Boot 2.6及 更高版本使用的是PathPatternMatcher，而Springfox(swagger)使用的路径匹配是基于AntPathMatcher的，所以需要配置。
   mail:
     host: smtp.163.com
     username: lyxaccount@163.com
@@ -28,16 +37,6 @@ spring:
         min-idle: 5
     timeout: 5000ms
 
-
-  application:
-    name: allDemo
-  datasource:
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/alldemo?useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true&serverTimezone=GMT%2B8
-    username: root
-    password: root
-    type: com.alibaba.druid.pool.DruidDataSource
-    #Spring Boot 2.6及 更高版本使用的是PathPatternMatcher，而Springfox(swagger)使用的路径匹配是基于AntPathMatcher的，所以需要配置。
   mvc:
     pathmatch:
       matching-strategy: ANT_PATH_MATCHER

@@ -1,6 +1,5 @@
 package com.example.interfacedemo.entity;
 
-import com.example.interfacedemo.util.TreeUtil;
 import com.example.interfacedemo.util.TreeUtils;
 
 import java.util.ArrayList;
@@ -18,10 +17,10 @@ public class TestTree {
         list.add(Dept.builder().id("5").pid("4").name("2-1").build());
 
         //这个工具类的转换有bug，三级及以下转不了
-        List<Dept> depts = TreeUtil.listToTree(list, Dept::setChildren, Dept::getId, Dept::getPid, (l) -> l.getPid().equals("0"));
+//        List<Dept> depts = TreeUtil.listToTree(list, Dept::setChildren, Dept::getId, Dept::getPid, (l) -> l.getPid().equals("0"));
         //可以转三级 及以下
         List<Dept> depts1 = TreeUtils.listToTree(list, Dept::setChildren, Dept::getId, Dept::getPid, (l) -> l.getPid().equals("0"));
-        System.out.println(depts.size());
+//        System.out.println(depts.size());
 
         List<Dept> testDepts = new ArrayList<Dept>() {{
             add(Dept.builder().id("1").pid("0").children(new ArrayList<Dept>() {{
@@ -33,12 +32,12 @@ public class TestTree {
         }};
         List<Dept> result = new ArrayList<>();
         //子集合为null，也就是求的最后一级的子类的集合
-        TreeUtil.treeToListDeep(testDepts, result, Dept::getChildren, (l) -> l.getChildren() == null);
+//        TreeUtil.treeToListDeep(testDepts, result, Dept::getChildren, (l) -> l.getChildren() == null);
         System.out.println(result);
 
         List<Dept> result2 = new ArrayList<>();
         //父级id为0，也就是把一级及子部门组装为集合（可通过debug模式发现result和result2的区别）
-        TreeUtil.treeToListDeep(testDepts, result2, Dept::getChildren, (l) -> l.getPid().equals("0"));
+//        TreeUtil.treeToListDeep(testDepts, result2, Dept::getChildren, (l) -> l.getPid().equals("0"));
         System.out.println(result2);
     }
 }
